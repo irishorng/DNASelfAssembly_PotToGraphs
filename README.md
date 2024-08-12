@@ -31,7 +31,7 @@ There are a variety of arguments that the user can choose:
 - `pot_str` is a string representing the Pot that the user would like to use. It should be formatted using semicolons to separate each tile and commas to separate half-edge types within a tile. Use a number following each half-edge type to indicate its exponent. Use a negative sign prior to the half-edge type to indicate that it is a hatted half-edge.
 - `order` is a number representing the order of the graph that the user would like to generate. Input `0` for the algorithm to automatically generate graphs of the minimum order. Input `-n` if the user only wants graphs of order `n`, where `n` is a natural number. Input any number greater than the minimal order if the user wants all graphs up to that order to be generated. If the given order is too small, the algorithm will default to the minimal order
 - `choose_tile_ratios` is a boolean representing if the user wants to specify ratios to be used to generate graphs. If `TRUE`, user will be prompted once ratios have been generated
-- `non_iso_graphs` is a boolean reprsenting if the user wants to generate all non-isomorphic graphs only. If `TRUE`, the algorithm will output all non-isomorphic graphs
+- `non_iso_graphs` is a boolean reprsenting if the user wants to generate all non-isomorphic graphs only. If `TRUE`, the algorithm will output all non-isomorphic graphs only.
 - `avoid_loops` is a boolean representing if the user wants to avoid loops. If `TRUE`, loops may still be possible but are not prioritized
 - `avoid_multiple_edges` is a boolean representing if the user wants to avoid multiple edges. If `TRUE`, multiple edges may still be possible but are not prioritized
 - `max_graphs` is a number representing the maximum number of graphs that the algorithm should output. This serves as a caution so that the computer does not overload if there are too many possible graphs that can be made.
@@ -56,4 +56,13 @@ This part involves the tile orderings and connecting tiles strategies
   - output:
 - 
   - 
- 
+
+## Part 4 (Non-Isomorphic Graphs)
+This part involves checking for non-isomorphic graphs if the user indicated `non_iso_graphs = TRUE`
+`generateAllNonIsoCanonical(list_of_dict)` is the general function that involves the following:
+- `allPermutationsForBondEdge(BDict, bEdgeIndex)` is a function that
+
+
+## Part 5 (Graph Visualization)
+This part involves the visualization techniques used to print a digital visually appealing graph
+
