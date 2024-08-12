@@ -26,6 +26,34 @@ Output:
 
 # Overivew:
 
-## Part 0
-- User
+## Part 0 (User Input)
+There are a variety of arguments that the user can choose:
+- `pot_str` is a string representing the Pot that the user would like to use. It should be formatted using semicolons to separate each tile and commas to separate half-edge types within a tile. Use a number following each half-edge type to indicate its exponent. Use a negative sign prior to the half-edge type to indicate that it is a hatted half-edge.
+- `order` is a number representing the order of the graph that the user would like to generate. Input `0` for the algorithm to automatically generate graphs of the minimum order. Input `-n` if the user only wants graphs of order `n`, where `n` is a natural number. Input any number greater than the minimal order if the user wants all graphs up to that order to be generated. If the given order is too small, the algorithm will default to the minimal order
+- `choose_tile_ratios` is a boolean representing if the user wants to specify ratios to be used to generate graphs. If `TRUE`, user will be prompted once ratios have been generated
+- `non_iso_graphs` is a boolean reprsenting if the user wants to generate all non-isomorphic graphs only. If `TRUE`, the algorithm will output all non-isomorphic graphs
+- `avoid_loops` is a boolean representing if the user wants to avoid loops. If `TRUE`, loops may still be possible but are not prioritized
+- `avoid_multiple_edges` is a boolean representing if the user wants to avoid multiple edges. If `TRUE`, multiple edges may still be possible but are not prioritized
+- `max_graphs` is a number representing the maximum number of graphs that the algorithm should output. This serves as a caution so that the computer does not overload if there are too many possible graphs that can be made.
+
+## Part 1 (Matrix Construction)
+- `convert_pot(pot_str)` is a function that converts the inputted `pot_str` (string that represents the pot) into a vector pot (see paper for definition of vector pot)
+  - input: `pot_str` pot written as a string
+  - output: the pot_matrix and pot_vector as  `M` and `tiles` respectively
+
+## Part 2 (Pot Evaluation)
+- `check_max_order(M)` is a function that finds the minimum order of a graph that can be made from `M` (the pot matrix)
+  - input: `M` the pot matrix outputted from the `convert_pot` function
+  - output: `order` the minimum order of the graph as an integer 
+- `pot_ratios(M, order)` is a function that finds the ratios of each tile that should be used to generate a graph. If the user had indicated `choose_tile_ratios = TRUE` in Part 0, then this function will use those ratios and ensure that those tile ratios generate a valid graph
+  - input: `M` is the pot matrix, `order` is the order outputted from the `check_max_order` function
+  - output: `ratios` a list of integers indicating the ratios of each tile that generate a graph
+ 
+## Part 3 (Graph construction) 
+This part involves the tile orderings and connecting tiles strategies
+- `compound_ordering_with_values(ordering_1, ordering_1_values, ordering_2_values)` is a function that returns an ordering where the first ordering is further sorted by a second list of values
+  - input:
+  - output:
+- 
+  - 
 
