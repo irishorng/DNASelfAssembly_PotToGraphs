@@ -7,7 +7,7 @@
 Full paper link: *coming soon*
 
 
-We designed an algorithm with the intention of taking a pot as its input and outputting at least one valid graph that can be realized by that pot.
+We designed an algorithm with the intention of taking a pot as its input and outputting at least one valid graph that can be realized by that pot. This code is run with SageMath.
 
 Inputs:
 - A pot in the form of a string (ex. $` \{ \{a,\hat{b}\}, \{a,b \}, \{ \hat{a}^2, \hat{b} \}, \{ \hat{a}^2, b \} \}`$ would be written as '$`a,-b;a,b;-a2,-b;-a2,b`$') with hatted letters preceded by a negative, and exponents (if applicable) listed after each letter that is being exponentiated
@@ -21,10 +21,10 @@ Inputs:
  
 Output:
 - All non-isomorphic graphs that can be made
+- Graph data to be put into the TikZ visualizer cell
 
 
-
-# Overivew:
+# Overview:
 
 ## Part 0 (User Input)
 There are a variety of arguments that the user can choose:
@@ -50,12 +50,14 @@ There are a variety of arguments that the user can choose:
   - output: `ratios` a list of integers indicating the ratios of each tile that generate a graph
  
 ## Part 3 (Graph construction) 
-This part involves the tile orderings and connecting tiles strategies
-- `compound_ordering_with_values(ordering_1, ordering_1_values, ordering_2_values)` is a function that returns an ordering where the first ordering is further sorted by a second list of values
-  - input:
-  - output:
-- 
-  - 
+This part involves the tile orderings and connecting tiles strategies. In the following functions, the parameters called `ordering_x` store a permutation to be applied to a list, and the parameters called `ordering_x_values` store a list of values given by some property (e.g. diversity) that are used to keep track of ties or to sort a list of indices from lowest value to highest value. These functions are used to construct more complex orderings, like ordering by degree and breaking ties with diversity (`degrees_diversities_ordering`) and lexicographic ordering (`alphabetical_ordering`).
+- `compound_ordering_with_values(ordering_1, ordering_1_values, ordering_2_values)` is a function that returns an ordering where the ties of the first ordering are further sorted by a second list of values
+- `compound_ordering_with_ordering(ordering_1, ordering_1_values, ordering_2)` is a function that returns an ordering where the ties of the first ordering are further sorted by a second ordering
+- `compound_ordering_with_ordering_list(ordering_1, ordering_1_values, ordering_2)` is a function that returns a list similar to the previous function, but the list is broken into sublists which each contain indices that tie according to the first ordering
+Once orderings are constructed, graphs can be assembled from a list of tiles.
+- `construct_bond_dictionary(tiles, multiplicities, ordering, avoid_multiple_edges)` is a function that from a list of tiles constructs and returns a bond dictionary (a Python dictionary where the keys are bond-edge types and the values are lists of pairs which describe the edges).
+  - input: `tiles` comes from the output of Part 1. `multiplicities` comes from the output of Part 2. `ordering` is a permutation to be applied to the tiles. This is by default set to `degrees_diversities_ordering`, but can be changed by changing the value of the variable `ordering_to_use` in the main bottom chunk of code. `avoid_multiple_edges` is determined by the user, and determines what strategy to use around multiple edges.
+  - output: a list of length 3. The first item in the list is a bond dictionary describing the graph that was constructed. The second item in the list simply passes along the value of the input parameter `multiplicities`, to be used 
 
 ## Part 4 (Non-Isomorphic Graphs)
 This part involves checking for non-isomorphic graphs if the user indicated `non_iso_graphs = TRUE`
