@@ -71,7 +71,8 @@ This part involves checking for non-isomorphic graphs if the user indicated `non
 - `generateAllNonIsoCanonicalPartial(list_of_dict)` enumerates all non-isomorphic graphs that can be made out of permutations of each given bond dictionary.
   - input: `list_of_dicts` is a list of lists of length 2. The first item in each list is a bond dictionary generated in Part 3, and the second item is the tile ratio of that graph.
   - output: a list of length 3, where the first item is a list of bond dictionaries that construct non-isomorphic graphs, the second item is all the leftover bond dictionaries that were found to be isomorphic to one of the ones in the non-iso list, and the third item is a list of canonical labelings corresponding to the graphs from the first list.
-Final part of the function takes the output from `generateAllNonIsoCanonicalPartial(list_of_dict)` and runs through the three lists again to spot any remaining graphs that are isomorphic to each other despite being constructed using different tile ratios. The output is then a list of length 2 where the first item is the final non-iso list, and the second item is the leftover iso list.
+  
+The final part of the function takes the output from `generateAllNonIsoCanonicalPartial(list_of_dict)` and runs through the three lists again to spot any remaining graphs that are isomorphic to each other despite being constructed using different tile ratios. The output is then a list of length 2 where the first item is the final non-iso list, and the second item is the leftover iso list.
 
 
 ## Part 5 (Graph Visualization)
