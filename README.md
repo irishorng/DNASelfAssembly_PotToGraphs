@@ -57,12 +57,21 @@ This part involves the tile orderings and connecting tiles strategies. In the fo
 Once orderings are constructed, graphs can be assembled from a list of tiles.
 - `construct_bond_dictionary(tiles, multiplicities, ordering, avoid_multiple_edges)` is a function that from a list of tiles constructs and returns a bond dictionary (a Python dictionary where the keys are bond-edge types and the values are lists of pairs which describe the edges).
   - input: `tiles` comes from the output of Part 1. `multiplicities` comes from the output of Part 2. `ordering` is a permutation to be applied to the tiles. This is by default set to `degrees_diversities_ordering`, but can be changed by changing the value of the variable `ordering_to_use` in the main bottom chunk of code. `avoid_multiple_edges` is determined by the user, and determines what strategy to use around multiple edges.
-  - output: a list of length 3. The first item in the list is a bond dictionary describing the graph that was constructed. The second item in the list simply passes along the value of the input parameter `multiplicities`, to be used 
+  - output: a list of length 3. The first item in the list is a bond dictionary describing the graph that was constructed. The second item in the list simply passes along the value of the input parameter `multiplicities`, to facilitate labeling vertices during graph visualization. The third item in the list list the labels of the tiles, to be applied to the vertices during graph visualization.
 
 ## Part 4 (Non-Isomorphic Graphs)
-This part involves checking for non-isomorphic graphs if the user indicated `non_iso_graphs = TRUE`
+This part involves checking for non-isomorphic graphs if the user indicated `non_iso_graphs = TRUE`. Some functions take in as input the tile ratio of the graph, which is just for the purposes of passing that information along to the final output for graph visualization.
 `generateAllNonIsoCanonical(list_of_dict)` is the general function that involves the following:
-- `allPermutationsForBondEdge(BDict, bEdgeIndex)` is a function that
+- `allPermutationsForBondEdge(BDict, bEdgeIndex)` is a function that enumerates all permutations in canonical form that will be applied to the edges of a single bond-edge type. We call this function once for each bond-edge type in a graph.
+  - input: `BDict` is the main bond dictionary. `bEdgeIndex` is the key of the desired bond-edge type in the bond dictionary.
+  - output: a list of lists of edges, each one having a different left permutation.
+- `allMultSwaps(BDict, all_possible_partial_dict)` is a function taking the Cartesian product of all single bond-edge type permutations, and applying them to the bond dictionary.
+  - input: `BDict` is a list of length 2, where the first item is the main bond dictionary, and the second item is the tile ratio of the graph. `all_possible_partial_dict` is a list of length 2, where the first item is a list of the outputs of `allPermutationsForBondEdge(BDict, bEdgeIndex)` for each bond-edge type, and the second item is the tile ratio of the graph
+  - output: a list of lists of length 2. The first item of each of these lists is a bond-dictionary with edges permuted, to be put into the isomorphism checker. The second item of each list is the tile ratio of the graph.
+- `generateAllNonIsoCanonicalPartial(list_of_dict)` enumerates all non-isomorphic graphs that can be made out of permutations of each given bond dictionary.
+  - input: `list_of_dicts` is a list of lists of length 2. The first item in each list is a bond dictionary generated in Part 3, and the second item is the tile ratio of that graph.
+  - output: a list of length 3, where the first item is a list of bond dictionaries that construct non-isomorphic graphs, the second item is all the leftover bond dictionaries that were found to be isomorphic to one of the ones in the non-iso list, and the third item is a list of canonical labelings corresponding to the graphs from the first list.
+Final part of the function takes the output from `generateAllNonIsoCanonicalPartial(list_of_dict)` and runs through the three lists again to spot any remaining graphs that are isomorphic to each other despite being constructed using different tile ratios. The output is then a list of length 2 where the first item is the final non-iso list, and the second item is the leftover iso list.
 
 
 ## Part 5 (Graph Visualization)
