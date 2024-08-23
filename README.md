@@ -1,6 +1,6 @@
 # DNASelfAssembly_PotToGraphs
 
-### Mitchell VonEschen, Iris Horng, Holly Luebsen, Grace Bielefeldt
+### Iris Horng, Mitchell VonEschen, Holly Luebsen, and Grace Bielefeldt
 
 -----------------------------------------------------------
 
