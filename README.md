@@ -62,11 +62,11 @@ Once orderings are constructed, graphs can be assembled from a list of tiles.
 ## Part 4 (Non-Isomorphic Graphs)
 This part involves checking for non-isomorphic graphs if the user indicated `non_iso_graphs = TRUE`. Some functions take in as input the tile ratio of the graph, which is just for the purposes of passing that information along to the final output for graph visualization.
 `generateAllNonIsoCanonical(list_of_dict)` is the general function that involves the following:
-- `allPermutationsForBondEdge(BDict, bEdgeIndex)` is a function that enumerates all permutations in canonical form that will be applied to the edges of a single bond-edge type. We call this function once for each bond-edge type in a graph.
-  - input: `BDict` is the main bond dictionary. `bEdgeIndex` is the key of the desired bond-edge type in the bond dictionary.
+- `allPermutationsForBondEdge(BDict, bEdgeIndex)` is a function that enumerates all permutations in canonical form that will be applied to the edges of a single cohesive end type. We call this function once for each cohesive end type in a graph.
+  - input: `BDict` is the main bond dictionary. `bEdgeIndex` is the key of the desired cohesive end type in the bond dictionary.
   - output: a list of lists of edges, each one having a different left permutation.
-- `allMultSwaps(BDict, all_possible_partial_dict)` is a function taking the Cartesian product of all single bond-edge type permutations, and applying them to the bond dictionary.
-  - input: `BDict` is a list of length 2, where the first item is the main bond dictionary, and the second item is the tile ratio of the graph. `all_possible_partial_dict` is a list of length 2, where the first item is a list of the outputs of `allPermutationsForBondEdge(BDict, bEdgeIndex)` for each bond-edge type, and the second item is the tile ratio of the graph
+- `allMultSwaps(BDict, all_possible_partial_dict)` is a function taking the Cartesian product of all single cohesive end type permutations, and applying them to the bond dictionary.
+  - input: `BDict` is a list of length 2, where the first item is the main bond dictionary, and the second item is the tile ratio of the graph. `all_possible_partial_dict` is a list of length 2, where the first item is a list of the outputs of `allPermutationsForBondEdge(BDict, bEdgeIndex)` for each cohesive end type, and the second item is the tile ratio of the graph
   - output: a list of lists of length 2. The first item of each of these lists is a bond-dictionary with edges permuted, to be put into the isomorphism checker. The second item of each list is the tile ratio of the graph.
 - `generateAllNonIsoCanonicalPartial(list_of_dict)` enumerates all non-isomorphic graphs that can be made out of permutations of each given bond dictionary.
   - input: `list_of_dicts` is a list of lists of length 2. The first item in each list is a bond dictionary generated in Part 3, and the second item is the tile ratio of that graph.
