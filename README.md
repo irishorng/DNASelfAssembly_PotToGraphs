@@ -76,5 +76,5 @@ The final part of the function takes the output from `generateAllNonIsoCanonical
 
 
 ## Part 5 (Graph Visualization)
-This part involves the visualization techniques used to print a digital visually appealing graph
+This part involves the visualization techniques used to print a digital visually appealing graph. This graph can be displayed in Sage, or copied as text into LaTeX to be rendered with TikZ. The graph stored in the variable `graph_to_plot` will be displayed, using the various options below it in the code. Once all the options are set as desired, run the cell to display the graph along with its TikZ rendering code.
 
