@@ -3,7 +3,7 @@ message: "If you use this software, please cite it as below."
 authors:
 - family-names: "Bielefeldt"
   given-names: "Grace"
-  orcid: "https://orcid.org/0000-0000-0000-0000"
+  orcid: "https://orcid.org/0009-0006-1649-529X"
 - family-names: Horng
   given-names: Iris
   orcid: "https://orcid.org/0009-0002-6293-053X"
@@ -12,7 +12,7 @@ authors:
   orcid: "https://orcid.org/0009-0006-4266-9556"
 - family-names: VonEschen
   given-names: Mitchell
-  orcid: "https://orcid.org/0000-0000-0000-0000"
+  orcid: "https://orcid.org/0009-0006-8052-8359"
 title: "DNASelfAssembly_PotToGraphs"
 version: 1.0.0
 date-released: 2024-09-18
