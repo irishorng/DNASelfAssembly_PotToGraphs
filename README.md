@@ -1,10 +1,12 @@
 # DNASelfAssembly_PotToGraphs
 
-### Iris Horng, Mitchell VonEschen, Holly Luebsen, and Grace Bielefeldt
+### Iris Horng*, Mitchell VonEschen*, Holly Luebsen, and Grace Bielefeldt
+<sub>\*indicates equal contribution</sub>
 
 -----------------------------------------------------------
 
-Full paper link: *coming soon*
+Full paper citation: Bielefeldt, G., Horng, I., Luebsen, H., VonEschen, M., Almodovar Velazquez, L., Harsy Ramsay, A., Johnson, C., Sorrells, J. (2025). Algorithmic Generation of DNA Self-Assembly Graphs. The PUMP Journal of Undergraduate Research, 8, 141–172. https://doi.org/10.46787/pump.v8i.4255 
+Full paper link: https://journals.calstate.edu/pump/article/view/4255
 
 
 We designed an algorithm with the intention of taking a pot as its input and outputting at least one valid graph that can be realized by that pot. This code is run with SageMath.
